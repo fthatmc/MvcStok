@@ -1,0 +1,38 @@
+﻿@using MvcStok.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TblMusteri>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Müşteri Sayfası</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>AD</th>
+        <th>SOYAD</th>
+        <th>ŞEHİR</th>
+        <th>BAKİYE</th>
+        <th>İŞLEMLER</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td>@item.ad</td>
+            <td>@item.soyad</td>
+            <td>@item.sehir</td>
+            <td>@item.bakiye</td>
+            <td><a href="/Musteri/MusteriSil/@item.id" class="btn btn-danger">Sil</a>
+            <a href="/Musteri/MusteriGetir/@item.id" class="btn btn-success">Güncelle</a></td>
+            
+        </tr>
+    }
+</table>
+
+@Html.PagedListPager((IPagedList)Model, sayfa=> Url.Action("Index", new {sayfa}))
+
+<a href="/Musteri/MusteriEkle/" class="btn btn-primary">Müşteri Ekle</a>

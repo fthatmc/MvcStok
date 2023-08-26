@@ -1,0 +1,25 @@
+﻿@model MvcStok.Models.Entity.TblSatışlar
+@{
+    ViewBag.Title = "SatısEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<form method="post">
+    <h2>Satış Ekleme Sayfası</h2>
+    <br />
+    <label>Ürün Adı</label>
+    @Html.DropDownListFor(x => x.TblUrunler.id, (List<SelectListItem>)ViewBag.urun, new { @class = "form-control" })
+    <br />
+    <label>Personel Adı</label>
+    @Html.DropDownListFor(x => x.TblPersonel.id, (List<SelectListItem>)ViewBag.personel, new { @class = "form-control" })
+    <br />
+    <label>Müşteri Adı</label>
+    @Html.DropDownListFor(x => x.TblMusteri.id, (List<SelectListItem>)ViewBag.musteri, new { @class = "form-control" })
+    <br />
+    
+    @Html.HiddenFor(x => x.fiyat, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Kaydet</button>
+</form>
+
